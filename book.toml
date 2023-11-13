@@ -1,6 +1,0 @@
-[book]
-authors = ["Najmeh Soroush"]
-language = "en"
-multilingual = false
-src = "src"
-title = "TimeLock Cryptographic Service"
