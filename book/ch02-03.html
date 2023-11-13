@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>TimeLock Cryptographic Service</title>
-        <meta name="robots" content="noindex" />
+        <title>Efficient TLCS - TimeLock Cryptographic Service</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html"><strong aria-hidden="true">2.</strong> Formal Description</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> e-voting</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> time document release</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> escrow services</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> legal and compliance purposes</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html"><strong aria-hidden="true">2.</strong> Formal Description</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html" class="active"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> e-voting</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> time document release</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> escrow services</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> legal and compliance purposes</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,55 +141,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><img src="../src/img/timelock-logo.png" alt="timelock_timeline.png" /></p>
-<h1 id="timelock-cryptographic-service"><a class="header" href="#timelock-cryptographic-service">TimeLock Cryptographic Service</a></h1>
-<p><a href="https://www.timelock.zone/">Timelock.zone</a> aims to serve as a public platform that allows companies and individuals to encrypt data for future decryption with support for various cryptographic systems, including the most popular <a href="https://">Elliptic curves</a>.</p>
-<p>Timelock is being developed by the <a href="https://research.aragon.org/about/">Aragon ZK Research team</a> using Gears, a COSMOS SDK written in <a href="https://www.rust-lang.org/">Rust</a>.</p>
-<h2 id="development-timeline"><a class="header" href="#development-timeline">Development Timeline</a></h2>
-<p><img src="../src/img/timelock_timeline.png" alt="timelock_timeline.png" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="how-it-works"><a class="header" href="#how-it-works">How It Works?</a></h2>
-<p>Choose your preferred cryptographic scheme and a future day (up to 10 years in advance) or hour (up to 2 years in advance) and obtain a public key. You can now encrypt your data and safely share it with others, knowing it can only be decrypted at the specified time in the future, when the corresponding private key will be published on timelock.zone.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="security"><a class="header" href="#security">Security</a></h2>
-<p>Our system reiles on the the well-known League of Entropy randomness beacon, drand.love. In addition, a single honest party participating in the computation of the public key is enough to ensure that the private key cannot be uncovered ahead of time. In order to increase security even further, we will allow public participation during the private key preparation phase.</p>
-<p>For formal security proof of the protocol read this <a href="https://">section</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="alpha-service-demo"><a class="header" href="#alpha-service-demo">Alpha Service Demo</a></h2>
-<p><a href="https://www.timelock.zone/nouns-demo.html">Here</a> we provide a TLCS Alpha Demo.</p>
-<h3 id="general-information"><a class="header" href="#general-information">General Information</a></h3>
-<p>This is the alpha implementation of the timelock service. There are currently many keys already available and during this alpha period you can request keys be made at no cost.</p>
-<blockquote>
-<p><strong>NOTE:</strong> These keys should not be used for real world encryption and are for testing purposes only </p>
-</blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-build-a-time-lock-crypto-service-based-on-league-of-entropy-drand"><a class="header" href="#how-to-build-a-time-lock-crypto-service-based-on-league-of-entropy-drand">How to Build a Time Lock Crypto Service based on League of Entropy (drand)</a></h1>
-<h2 id="setting-and-motivation"><a class="header" href="#setting-and-motivation">Setting and motivation</a></h2>
-<p>We assume the reader to be familiar with the League of Entropy (a.k.a. <a href="https://drand.love">drand</a>) system but the presentation of our treatment is self-contained.
-In the following we denote by $g_1,g_2$ the generators of the groups $G_1,G_2$ of some prime order $p$ used by LOE, and by $PK_L$ the public key of LOE that has the form $PK_L=g_2^{sk_L}$ where $sk_L\in Z_p$ is the corresponding secret key that is shared by the LOE members.
-For simplicity, in the following we will often say that at time $C$ LOE releases a secret key $SK_C$ whereas we should actually refer to a round number rather than a time. 
-We recall that LOE is a coalition of members who, at each time interval $C$, release a BLS signature $\sigma_C=Hash(C)^{SK_L}$, where $Hash$ is a (standardized hash function) that maps bit strings to points in $G_1$ (we skip technical details about the actual encodings of $C$). This signature is jointly computed in a threshold fashion by the LOE members in a way that a minority of the members cannot obtain the secret key $SK_L$ (that is shared by the members). 
-To ease our presentation, henceforth we denote by $SK_C$ the signature $\sigma_C$ for time $C$ and we say that $SK_C$ is the secret key of LOE for time $C$. 
-For the purpose of our treatment, the reader does not need to know the details of the LOE protocol but simply that at each time interval $C$ the afore-mentioned secret key $SK_C$ is publicly available.</p>
-<p>We want a cryptographic protocol among a set of parties to jointly construct a public key $PK$ whose corresponding secret key $sk$ can be publicly computed only at time greater or equal than $C$ when the secret key $SK_C$ of LOE for time $C$ will be made available; here $C$ is a public input to all parties.
-The public key $PK$ should have the form $g^{sk}$ where $g$ is the generator of a group of some prime order $q$, so $sk \in Z_q$. We look for generic approaches so we consider any kind of prime order group in which the Dlog Assumption holds: that is elliptic curve groups (both bilinear and non-bilinear groups) and multiplicative groups of prime order; <a href="ch02-01.html#Generalization-to-any-homomorphic-OWF-and-thus-to-RSA">later on</a> we will also cover a specific RSA setting.
-This public key $PK$ can be then used for encryption using any encryption scheme defined over the group generated by $g$ (later on we will also discuss other applications to digital signatures and zero-knowledge proofs).</p>
-<p>Observe that this problem, though related, is independent from the recently proposed <a href="https://eprint.iacr.org/2015/482">timelock encryption</a> primitive. Indeed, a user Alice can use the public key $PK$, that was part of the output of an execution of the TLCS protocol for time $C$, to encrypt measages without specifying any time and only performing cryptographic operations related to the group generated by $g$. After time $C$, using $SK_C$ and the transcript of the TLCS protocol anyone (and thus a smart contract) can compute the secret key $sk$ corresponding to $PK$. Bob can use $sk$ to decrypt Alice's messages. Observe that, unlike timelock encryption, here the computations of Alice and Bob are completely independent from the LOE system. </p>
-<p>We assume that there is a blockchain on which anyone (or possibly only registered people to avoid DoS) can post data as a mean to generate a public key PK and some related data  that can be used by anyone, and so by a smart contract, to obtain the corresponding secret key $sk$ at time $C$.</p>
-<p>Additionally, we want that there is a committee of members that anyone can freely join, that is the set of participants in a particular execution of the protocol is not fixed, and we want the protocol to require just one message of interaction from each participant (assuming a perfect broadcast channel like a blockchain).</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="warmup-a-tlcs-protocol-from-general-purpose-nizk-proofs"><a class="header" href="#warmup-a-tlcs-protocol-from-general-purpose-nizk-proofs">Warmup: a TLCS protocol from general-purpose NIZK proofs</a></h2>
-<p>Consider the following protocol.
-The generic party $i=1,...$ does the following. It computes $PK_i=g^{sk_i}$, where $sk_i$ is randomly chosen in $Z_q$. 
-It chooses random $t_i$ from $Z_p$ and computes $T_i=g_2^{t_i}$, $Z_i=e(H(C),PK_L)^{t_i}$ and $y_i=H(Z_i) \oplus sk_i$.
-The party $i$ posts on the blokchain:
-$(T_i, y_i)$. Note that $Z_i$ is not posted, and the honest party is required to delete $Z_i, t_i,sk_i$ from his memory, so that until time $C$ nobody can get $sk_i$.</p>
-<p>At some point, the public key construction phase terminates and no new party can participate.
-Then, the public key $PK$ is set to $PK=\prod_i PK_i=g^{sk}$, where $sk=\sum_i sk_i \mod q$.</p>
-<p>When the secret $SK_C=H(C)^{sk_L}$ of LOE is published at time $C$, anyone can publicly do the following based on the information posted on the blockchain.
-For any $i$ compute $e(SK_C,T_i)=Z_i$ and then can compute $sk_i=y_i \oplus H(Z_i)$.</p>
-<p>From all $sk_i$'s, anyone can then recover $sk=\sum_i sk_i \mod q$.</p>
-<p>The security here guarantees that if only a single party is trusted in having deleted his memory at the of the computation, then the secret key $sk$ corresponding to $PK$ is protected until time $C$ assuming that the majority of LOE members  are honest.
-That is, the only added assumption beyond LOE is that there is a single honest party. Observe that,  since anyone can publicly participate in the protocol (that is the committee allows on-fly join), if someone does not trust the system can decide on participating in the protocol freely.</p>
-<p>To be able to decrypt we need to assume that the values $y_i$'s posted on the blockchain are computed correctly according to the above procedure, so each $y_i$ needs to be accompained with a ZK proof of well-formedness, that is a proof that the tuple $(g_2,PK_L,C,T_i,PK_i,y_i)$ is such that there exist values $t_i\in Z_p$, $sk_i\in Z_q$ such that $T_i=g_2^{t_i}$, $Z_i=e(H(C),PK_L)^{t_i}$, $y_i=H(Z_i) \oplus sk_i$ and $PK_i=g^{sk_i}$.
-The proof system needs to be non-malleable to prevent attacks in which the last party can induce a public key of which he knows the corresponding secret key; alternatively, a standard non-interactive Schnorr's proof must be attacked to each partial public key $PK_i$.</p>
-<p>This requires a NIZK proof of computation of exponentiation in the target group. Notice that if a tuple $(PK_i,T_i,y_i)$ does not come with a valid proof, it will not be used for the computation of $PK$. </p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs"><a class="header" href="#an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs">An efficient TLCS protocol that avoids general-purpose NIZK proofs</a></h2>
+                        <h2 id="an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs"><a class="header" href="#an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs">An efficient TLCS protocol that avoids general-purpose NIZK proofs</a></h2>
 <p>The above NIZK proof could be implemented with general-purpose SNARK for circuits that compute operations in the target group of the LOE's curve. 
 In this section we show how to implement a variant of the above protocol that avoids general-purpose NIZK proofs.</p>
 <p>(In the following we will be focusing on a single party so we will remove the subscript $i$ that refers to the parties. So when you read $PK$, this is actually $PK_i$ of the previous notation and not the public key that is the result of the shares of all committee members. We choose to do that to minimize the number of subscripts to fit better in hackmd.)</p>
@@ -270,24 +221,18 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
 <p>Borrowing ideas from the celebrated Feige-Lapidot-Shamir technique, the Schnorr signature scheme can be modified so that the underlying sigma protocol on which it is based proves knowledge of a witness to the following $NP$ statement: &quot;I know a secret key corresponding to $PK_{A}$ OR I know a secret key corresponding to $PK$&quot;, where $PK_A$ is a known public key of a user Alice and $PK$ is a TLCS public key $PK$ for some time $C$.</p>
 <p>In this way a resulting signature is such that: a valid signature by Alice looks convincing to Bob before time $C$ but if Bob transfers this signature to Peggy after time $C$, such signature will not look convincing to Peggy since it might have been generated by anyone using the simulator algorithm of the sigma protocol using the secret key corresponding to $PK$ (that may be assumed to be known by anyone after time $C$).</p>
 <p>The same concept can be extended to general-purpose NIZK proofs that can be made to guarantee the following property: they are publicly verifiable until a given time $C$ but after $C$ they will be no longer transferable (that is, they will no longer look convincing to any receiver).</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="correctness"><a class="header" href="#correctness">Correctness</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="security-1"><a class="header" href="#security-1">Security</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="implementation"><a class="header" href="#implementation">Implementation</a></h1>
-<p>An implementation in C/C++ of the efficient TLCS protocol described above is available <a href="https://github.com/aragonzkresearch/tlcs-c">here</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="timelock-encryption"><a class="header" href="#timelock-encryption">Timelock Encryption</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="commitment"><a class="header" href="#commitment">Commitment</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="zk-with-expiration-time"><a class="header" href="#zk-with-expiration-time">ZK with expiration time</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="e-voting"><a class="header" href="#e-voting">e-voting</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="time-document-release"><a class="header" href="#time-document-release">time document release</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="trustless-betting-and-auctions"><a class="header" href="#trustless-betting-and-auctions">trustless betting and auctions</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="escrow-services"><a class="header" href="#escrow-services">escrow services</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="legal-and-compliance-purposes"><a class="header" href="#legal-and-compliance-purposes">legal and compliance purposes</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch02-02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="ch02-04.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -295,7 +240,13 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch02-02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="ch02-04.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -318,11 +269,6 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </body>
 </html>
