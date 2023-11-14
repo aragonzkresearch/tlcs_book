@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="dark" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,14 +10,13 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
@@ -29,13 +28,17 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="njmstyle.css">
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "dark";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -60,40 +63,69 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('dark')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html" class="active"><strong aria-hidden="true">2.</strong> Formal Description</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> e-voting</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> time document release</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> escrow services</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> legal and compliance purposes</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html" class="active"><strong aria-hidden="true">2.</strong> Formal Description</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security Model</a></li><li class="chapter-item expanded "><a href="ch02-06.html"><strong aria-hidden="true">2.5.</strong> TLCS curves</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-02.html"><strong aria-hidden="true">3.1.</strong> TLCS - C++</a></li><li class="chapter-item expanded "><a href="ch03-03.html"><strong aria-hidden="true">3.2.</strong> TLCS - Rust</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Noun Project</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> E-voting</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> TLCS fs</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> Trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> Escrow services</a></li><li class="chapter-item expanded "><a href="ch04-10.html"><strong aria-hidden="true">4.9.</strong> Legal and compliance purposes</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -112,9 +144,6 @@
                     <h1 class="menu-title">TimeLock Cryptographic Service</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
 
                     </div>
                 </div>
@@ -144,16 +173,17 @@
                         <h1 id="how-to-build-a-time-lock-crypto-service-based-on-league-of-entropy-drand"><a class="header" href="#how-to-build-a-time-lock-crypto-service-based-on-league-of-entropy-drand">How to Build a Time Lock Crypto Service based on League of Entropy (drand)</a></h1>
 <h2 id="setting-and-motivation"><a class="header" href="#setting-and-motivation">Setting and motivation</a></h2>
 <p>We assume the reader to be familiar with the League of Entropy (a.k.a. <a href="https://drand.love">drand</a>) system but the presentation of our treatment is self-contained.
-In the following we denote by $g_1,g_2$ the generators of the groups $G_1,G_2$ of some prime order $p$ used by LOE, and by $PK_L$ the public key of LOE that has the form $PK_L=g_2^{sk_L}$ where $sk_L\in Z_p$ is the corresponding secret key that is shared by the LOE members.
-For simplicity, in the following we will often say that at time $C$ LOE releases a secret key $SK_C$ whereas we should actually refer to a round number rather than a time. 
-We recall that LOE is a coalition of members who, at each time interval $C$, release a BLS signature $\sigma_C=Hash(C)^{SK_L}$, where $Hash$ is a (standardized hash function) that maps bit strings to points in $G_1$ (we skip technical details about the actual encodings of $C$). This signature is jointly computed in a threshold fashion by the LOE members in a way that a minority of the members cannot obtain the secret key $SK_L$ (that is shared by the members). 
-To ease our presentation, henceforth we denote by $SK_C$ the signature $\sigma_C$ for time $C$ and we say that $SK_C$ is the secret key of LOE for time $C$. 
-For the purpose of our treatment, the reader does not need to know the details of the LOE protocol but simply that at each time interval $C$ the afore-mentioned secret key $SK_C$ is publicly available.</p>
-<p>We want a cryptographic protocol among a set of parties to jointly construct a public key $PK$ whose corresponding secret key $sk$ can be publicly computed only at time greater or equal than $C$ when the secret key $SK_C$ of LOE for time $C$ will be made available; here $C$ is a public input to all parties.
-The public key $PK$ should have the form $g^{sk}$ where $g$ is the generator of a group of some prime order $q$, so $sk \in Z_q$. We look for generic approaches so we consider any kind of prime order group in which the Dlog Assumption holds: that is elliptic curve groups (both bilinear and non-bilinear groups) and multiplicative groups of prime order; <a href="#Generalization-to-any-homomorphic-OWF-and-thus-to-RSA">later on</a> we will also cover a specific RSA setting.
-This public key $PK$ can be then used for encryption using any encryption scheme defined over the group generated by $g$ (later on we will also discuss other applications to digital signatures and zero-knowledge proofs).</p>
-<p>Observe that this problem, though related, is independent from the recently proposed <a href="https://eprint.iacr.org/2015/482">timelock encryption</a> primitive. Indeed, a user Alice can use the public key $PK$, that was part of the output of an execution of the TLCS protocol for time $C$, to encrypt measages without specifying any time and only performing cryptographic operations related to the group generated by $g$. After time $C$, using $SK_C$ and the transcript of the TLCS protocol anyone (and thus a smart contract) can compute the secret key $sk$ corresponding to $PK$. Bob can use $sk$ to decrypt Alice's messages. Observe that, unlike timelock encryption, here the computations of Alice and Bob are completely independent from the LOE system. </p>
-<p>We assume that there is a blockchain on which anyone (or possibly only registered people to avoid DoS) can post data as a mean to generate a public key PK and some related data  that can be used by anyone, and so by a smart contract, to obtain the corresponding secret key $sk$ at time $C$.</p>
+In the following we denote by \( g_1,g_2 \)</p>
+<p>the generators of the groups \(G_1,G_2\) of some prime order \(p\) used by LOE, and by \(PK_L\) the public key of LOE that has the form \(PK_L=g_2^{sk_L}\) where \(sk_L\in Z_p\) is the corresponding secret key that is shared by the LOE members.
+For simplicity, in the following we will often say that at time \(C\) LOE releases a secret key \(SK_C\) whereas we should actually refer to a round number rather than a time. 
+We recall that LOE is a coalition of members who, at each time interval \(C \), release a BLS signature \(\sigma_C=Hash(C)^{SK_L}\), where \(Hash\) is a (standardized hash function) that maps bit strings to points in \(G_1\) (we skip technical details about the actual encodings of \(C \) . This signature is jointly computed in a threshold fashion by the LOE members in a way that a minority of the members cannot obtain the secret key \(SK_L\) (that is shared by the members). 
+To ease our presentation, henceforth we denote by \(SK_C\) the signature \(\sigma_C\) for time \(C\) and we say that \(SK_C\) is the secret key of LOE for time \(C\) . 
+For the purpose of our treatment, the reader does not need to know the details of the LOE protocol but simply that at each time interval \(C\) the afore-mentioned secret key \(SK_C\) is publicly available.</p>
+<p>We want a cryptographic protocol among a set of parties to jointly construct a public key \(PK\) whose corresponding secret key \(sk\) can be publicly computed only at time greater or equal than \(C\) when the secret key \(SK_C\) of LOE for time \(C\) will be made available; here \(C\) is a public input to all parties.
+The public key \(PK\) should have the form \(g^{sk}\) where \(g\) is the generator of a group of some prime order \(q\), so \(sk \in Z_q\). We look for generic approaches so we consider any kind of prime order group in which the Dlog Assumption holds: that is elliptic curve groups (both bilinear and non-bilinear groups) and multiplicative groups of prime order; <a href="#Generalization-to-any-homomorphic-OWF-and-thus-to-RSA">later on</a> we will also cover a specific RSA setting.
+This public key \(PK\) can be then used for encryption using any encryption scheme defined over the group generated by \(g\) (later on we will also discuss other applications to digital signatures and zero-knowledge proofs).</p>
+<p>Observe that this problem, though related, is independent from the recently proposed <a href="https://eprint.iacr.org/2015/482">timelock encryption</a> primitive. Indeed, a user Alice can use the public key \(PK \), that was part of the output of an execution of the TLCS protocol for time \(C \), to encrypt measages without specifying any time and only performing cryptographic operations related to the group generated by \(g\) . After time \(C \), using \(SK_C\) and the transcript of the TLCS protocol anyone (and thus a smart contract) can compute the secret key \(sk\) corresponding to \(PK\). Bob can use \(sk\) to decrypt Alice's messages. Observe that, unlike timelock encryption, here the computations of Alice and Bob are completely independent from the LOE system. </p>
+<p>We assume that there is a blockchain on which anyone (or possibly only registered people to avoid DoS) can post data as a mean to generate a public key PK and some related data  that can be used by anyone, and so by a smart contract, to obtain the corresponding secret key \(sk\) at time \(C \) .</p>
 <p>Additionally, we want that there is a committee of members that anyone can freely join, that is the set of participants in a particular execution of the protocol is not fixed, and we want the protocol to require just one message of interaction from each participant (assuming a perfect broadcast channel like a blockchain).</p>
 
                     </main>
@@ -164,7 +194,7 @@ This public key $PK$ can be then used for encryption using any encryption scheme
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ch02-02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch02-02.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -178,7 +208,7 @@ This public key $PK$ can be then used for encryption using any encryption scheme
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ch02-02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch02-02.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -204,5 +234,6 @@ This public key $PK$ can be then used for encryption using any encryption scheme
         <!-- Custom JS scripts -->
 
 
+    </div>
     </body>
 </html>
