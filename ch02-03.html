@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Efficient TLCS - TimeLock Cryptographic Service</title>
+        <title>Efficient TLCS - tlcs simple format</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,8 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -60,40 +61,69 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html"><strong aria-hidden="true">2.</strong> Formal Description</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html" class="active"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> e-voting</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> time document release</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> escrow services</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> legal and compliance purposes</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="ch01-01.html"><strong aria-hidden="true">1.</strong> Timelock Cryptographic Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-02.html"><strong aria-hidden="true">1.1.</strong> How It Works?</a></li><li class="chapter-item expanded "><a href="ch01-03.html"><strong aria-hidden="true">1.2.</strong> Security</a></li><li class="chapter-item expanded "><a href="ch01-04.html"><strong aria-hidden="true">1.3.</strong> Alpha Service Demo</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-01.html"><strong aria-hidden="true">2.</strong> Formal Description</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-02.html"><strong aria-hidden="true">2.1.</strong> TLCS from NIZK</a></li><li class="chapter-item expanded "><a href="ch02-03.html" class="active"><strong aria-hidden="true">2.2.</strong> Efficient TLCS</a></li><li class="chapter-item expanded "><a href="ch02-04.html"><strong aria-hidden="true">2.3.</strong> Correctness</a></li><li class="chapter-item expanded "><a href="ch02-05.html"><strong aria-hidden="true">2.4.</strong> Security Model</a></li><li class="chapter-item expanded "><a href="ch02-06.html"><strong aria-hidden="true">2.5.</strong> TLCS curves</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-01.html"><strong aria-hidden="true">3.</strong> Implementation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-02.html"><strong aria-hidden="true">3.1.</strong> TLCS - C++</a></li><li class="chapter-item expanded "><a href="ch03-03.html"><strong aria-hidden="true">3.2.</strong> TLCS - Rust</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-01.html"><strong aria-hidden="true">4.</strong> Application and Use Cases</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-02.html"><strong aria-hidden="true">4.1.</strong> Noun Project</a></li><li class="chapter-item expanded "><a href="ch04-03.html"><strong aria-hidden="true">4.2.</strong> Timelock Encryption</a></li><li class="chapter-item expanded "><a href="ch04-04.html"><strong aria-hidden="true">4.3.</strong> Commitment</a></li><li class="chapter-item expanded "><a href="ch04-05.html"><strong aria-hidden="true">4.4.</strong> Expiring ZK Proofs</a></li><li class="chapter-item expanded "><a href="ch04-06.html"><strong aria-hidden="true">4.5.</strong> E-voting</a></li><li class="chapter-item expanded "><a href="ch04-07.html"><strong aria-hidden="true">4.6.</strong> TLCS fs</a></li><li class="chapter-item expanded "><a href="ch04-08.html"><strong aria-hidden="true">4.7.</strong> Trustless betting and auctions</a></li><li class="chapter-item expanded "><a href="ch04-09.html"><strong aria-hidden="true">4.8.</strong> Escrow services</a></li><li class="chapter-item expanded "><a href="ch04-10.html"><strong aria-hidden="true">4.9.</strong> Legal and compliance purposes</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -109,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">TimeLock Cryptographic Service</h1>
+                    <h1 class="menu-title">tlcs simple format</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -144,83 +174,83 @@
                         <h2 id="an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs"><a class="header" href="#an-efficient-tlcs-protocol-that-avoids-general-purpose-nizk-proofs">An efficient TLCS protocol that avoids general-purpose NIZK proofs</a></h2>
 <p>The above NIZK proof could be implemented with general-purpose SNARK for circuits that compute operations in the target group of the LOE's curve. 
 In this section we show how to implement a variant of the above protocol that avoids general-purpose NIZK proofs.</p>
-<p>(In the following we will be focusing on a single party so we will remove the subscript $i$ that refers to the parties. So when you read $PK$, this is actually $PK_i$ of the previous notation and not the public key that is the result of the shares of all committee members. We choose to do that to minimize the number of subscripts to fit better in hackmd.)</p>
+<p>(In the following we will be focusing on a single party so we will remove the subscript \(i \) that refers to the parties. So when you read \(PK \), this is actually \(PK_i \) of the previous notation and not the public key that is the result of the shares of all committee members. We choose to do that to minimize the number of subscripts to fit better in hackmd.)</p>
 <p>We will construct an interactive protocol. This can be done non-interactive via the FS transform. </p>
-<p>There is a security parameter $k$ that affects the soundness error, precisely the soundness error will be $2^{-k}$ so there is a trade-off: we have freedom to choose $k$ as large as possible to reduce the soundness error and as small as possible to make the system more efficient.</p>
-<p>The generic party (the prover) has a public key $PK=g^{sk}$, where $sk\in Z_q$ is known to the prover but not to the verifier.
-For $j=1,\ldots,k$ the prover chooses two random values $sk_{j,1},sk_{j,2}$ that sum up to $sk$ and sets $PK_{j,1}=g^{sk_{j,1}},PK_{j,2}=g^{sk_{j,2}}$. </p>
-<p>For $j=1,\ldots, k$, the prover chooses random $t_{j,1},t_{j,2}$ from $Z_p$ and computes $T_{j,1}=g_2^{t_{j,1}}$, $Z_{j,1}=e(H(C),PK_L)^{t_{j,1}}$ and $y_{j,1}=H(Z_{j,1}) \oplus sk_{j,1}$ and similarly $T_{j,2},Z_{j,2},y_{j,2}$.
-The prover sends to the verifier the value $PK$ and the list of tuples:
-$(PK_{j,b},T_{j,b_j},y_{j,b})_{j\in[k],b\in{1,2}}$. </p>
-<p>(Note: as explained before here we removed the subscript $i$ so $PK$ refers to the contribution of a generic party and not to the final public key that is computed as product of the public keys of all members. We do not include the further subscript $i$ to avoid many subscripts like &quot;$PK_{i,j,b_j}$&quot;, etc.)</p>
-<p>The verifier chooses a vector of $k$ random values $b_1,\ldots,b_k$ in ${1,2}$ and sends it to the prover.
-For all $j\in[k]$ the prover sets $t_j=t_{j,b_j}$ and sends back to the verifier the tuple $(t_j)_{j\in[k]}$. The verifier accepts iff all the following checks pass:</p>
+<p>There is a security parameter \(k \) that affects the soundness error, precisely the soundness error will be \(2^{-k} \) so there is a trade-off: we have freedom to choose \(k \) as large as possible to reduce the soundness error and as small as possible to make the system more efficient.</p>
+<p>The generic party (the prover) has a public key \(PK=g^{sk} \), where \(sk\in Z_q \) is known to the prover but not to the verifier.
+For \(j=1,\ldots,k \) the prover chooses two random values \(sk_{j,1},sk_{j,2} \) that sum up to \( sk \) and sets \( PK_{j,1}=g^{sk_{j,1}},PK_{j,2}=g^{sk_{j,2}} \). </p>
+<p>For \(j=1,\ldots, k \), the prover chooses random \(t_{j,1},t_{j,2} \) from \(Z_p \) and computes \(T_{j,1}=g_2^{t_{j,1}} \), \(Z_{j,1}=e(H(C),PK_L)^{t_{j,1}} \) and \(y_{j,1}=H(Z_{j,1}) \oplus sk_{j,1} \) and similarly \(T_{j,2},Z_{j,2},y_{j,2} \).
+The prover sends to the verifier the value \(PK \) and the list of tuples:
+\)(PK_{j,b},T_{j,b_j},y_{j,b})_{j\in[k],b\in{1,2}} \). </p>
+<p>(Note: as explained before here we removed the subscript \(i \) so \(PK \) refers to the contribution of a generic party and not to the final public key that is computed as product of the public keys of all members. We do not include the further subscript \(i \) to avoid many subscripts like &quot;\(PK_{i,j,b_j} \)&quot;, etc.)</p>
+<p>The verifier chooses a vector of \(k \) random values \(b_1,\ldots,b_k \) in \({1,2} \) and sends it to the prover.
+For all \(j\in[k] \) the prover sets \(t_j=t_{j,b_j} \) and sends back to the verifier the tuple \((t_j)_{j\in[k]} \). The verifier accepts iff all the following checks pass:</p>
 <ul>
 <li>
 <ol>
-<li>For all $j=1,\ldots,k$ check that $PK_{j,1}* PK_{j,2}=PK$.
-That is, the verifier checks that all the pairs of public keys form a $2$ out of $2$ secret sharing of the same public key $PK$. This also convinces the verifier that the same condition holds with respect to the secret keys, that is that for all $i=1,\ldots,k$, $sk_{j,1}+sk_{j,2}=sk$ modulo $q$, where $PK=g^{sk}$.</li>
+<li>For all \(j=1,\ldots,k \) check that \(PK_{j,1}* PK_{j,2}=PK \).
+That is, the verifier checks that all the pairs of public keys form a \(2 \) out of \(2 \) secret sharing of the same public key \(PK \). This also convinces the verifier that the same condition holds with respect to the secret keys, that is that for all \(i=1,\ldots,k \), \(sk_{j,1}+sk_{j,2}=sk \) modulo \(q \), where \(PK=g^{sk} \).</li>
 </ol>
 </li>
 <li>
 <ol start="2">
-<li>The verifier now checks that the tuple $PK_{j,b_j},T_{j,b_j},y_{j,b_j}$ is well-formed in the following way. The verifier computes $Z_j=e(H(C),PK_L)^{t_j}$. If $t_j$ was equal to $t_{j,b_j}$ then it holds that $Z_j=Z_{j,b_j}$.  The verifier computes $s_j=H(Z_j) \oplus y_{j,b_j}.$ If $t_j$ was equal to $t_{j,b_j}$ then it holds that $s_j=sk_{j,b_j}$. The verifier checks that $PK_{j,b_j}=g^{s_j}$ and that $T_{j,b_j}=g_2^{t_j}$. This convinces the verifier that $s_j=sk_{j,b_j}$ and that $sk_{j,b_j}$ is the secret key corresponding to $PK_{j,b_j}$.</li>
+<li>The verifier now checks that the tuple \(PK_{j,b_j},T_{j,b_j},y_{j,b_j} \) is well-formed in the following way. The verifier computes \(Z_j=e(H(C),PK_L)^{t_j} \). If \(t_j \) was equal to \(t_{j,b_j} \) then it holds that \(Z_j=Z_{j,b_j} \).  The verifier computes \(s_j=H(Z_j) \oplus y_{j,b_j}. \) If \(t_j \) was equal to \(t_{j,b_j} \) then it holds that \(s_j=sk_{j,b_j} \). The verifier checks that \(PK_{j,b_j}=g^{s_j} \) and that \(T_{j,b_j}=g_2^{t_j} \). This convinces the verifier that \(s_j=sk_{j,b_j} \) and that \(sk_{j,b_j} \) is the secret key corresponding to \(PK_{j,b_j} \).</li>
 </ol>
 </li>
 </ul>
-<p>Let $s_{j,1}$ and $s_{j,2}$ be the values induced by $SK_C$ that should be equal to resp. $sk_{j,1}$ and $sk_{j,2}$ if the prover is honest. 
-If $PK$ was not invertible (that is if $sk$ is not equal to $s_{j,1}+s_{j,2}\ mod\ q$ then: if the first check with respect to a generic $j$ passes then the second check with respect to the same $j$ can pass only with prob. at most $1/2$ over the choice of $b_j$.
-So the prob. that a malicious committee member convinces the verifier is $1/2^k$.</p>
-<p>If the proof passes the public key $PK$ of the party is accepted and is used to compute the public key for time $C$ by multiplying together all the public keys of all parties whose proofs were accepted.</p>
-<p>At time $C$, to recover the corresponding secret key $sk$ using the value $SK_C=H(C)^{SK_L}$ released by LOE, one runs the following procedure.
+<p>Let \(s_{j,1} \) and \(s_{j,2} \) be the values induced by \(SK_C \) that should be equal to resp. \(sk_{j,1} \) and \(sk_{j,2} \) if the prover is honest. 
+If \(PK \) was not invertible (that is if \(sk \) is not equal to \(s_{j,1}+s_{j,2}\ mod\ q \) then: if the first check with respect to a generic \(j \) passes then the second check with respect to the same \(j \) can pass only with prob. at most \(1/2 \) over the choice of \(b_j \).
+So the prob. that a malicious committee member convinces the verifier is \(1/2^k \).</p>
+<p>If the proof passes the public key \(PK \) of the party is accepted and is used to compute the public key for time \(C \) by multiplying together all the public keys of all parties whose proofs were accepted.</p>
+<p>At time \(C \), to recover the corresponding secret key \(sk \) using the value \(SK_C=H(C)^{SK_L} \) released by LOE, one runs the following procedure.
 - for j=1 to k:</p>
 <ul>
-<li>For all $b\in{1,2}$ compute $e(H(C)^{SK_L},T_{j,b})=Z_{j,b}$, $s_{j,b}=H(Z_{j,b}) \oplus y_{j,b}$.</li>
-<li>If $g^{s_{j,1}}=PK_{j,1}$ and $g^{s_{j,2}}=PK_{j,2}$ and $PK_{j,1} * PK_{j,2}=PK$ then return $sk=s_{j,1}+s_{j,2}\ mod\ q$ else continue; </li>
+<li>For all \( b\in{1,2} \) compute \(e(H(C)^{SK_L},T_{j,b})=Z_{j,b} \), \(s_{j,b}=H(Z_{j,b}) \oplus y_{j,b} \).</li>
+<li>If \( g^{s_{j,1}}=PK_{j,1} \) and \(g^{s_{j,2}}=PK_{j,2} \) and \(PK_{j,1} * PK_{j,2}=PK \) then return \(sk=s_{j,1}+s_{j,2}\ mod\ q \) else continue; </li>
 </ul>
-<p>The previous proof can be made non-interactive by having the prover to choose the vector $b_1,...,b_k$ as hash of the string $[PK,(PK_{j,b},T_{j,b_j},y_{j,b})_{j\in[k]}]$.
-The verifier does the same to recompute the vector $b_1,...,b_k$ in a deterministic way.
+<p>The previous proof can be made non-interactive by having the prover to choose the vector \(b_1,...,b_k \) as hash of the string \([PK,(PK_{j,b},T_{j,b_j},y_{j,b})_{j\in[k]}] \).
+The verifier does the same to recompute the vector \(b_1,...,b_k \) in a deterministic way.
 Under mild conditions  the non-interactive variant can be made weak simulation sound extractable (see <a href="https://eprint.iacr.org/2012/704">here</a>) since the previous TLCS protocol is a sigma protocol.
 * TODO: check that the conditions are satisfied.</p>
 <h3 id="variants-based-on-general-secret-sharing"><a class="header" href="#variants-based-on-general-secret-sharing">Variants based on general secret sharing</a></h3>
-<p>The above system can be modified having in each repetition e.g. a prob. of error of $1/3$ instead of $1/2$ and with overall shorter proofs.
+<p>The above system can be modified having in each repetition e.g. a prob. of error of \(1/3 \) instead of \(1/2 \) and with overall shorter proofs.
 The idea is the following. 
-For each $j\in[k]$ we can choose e.g. $3$ secret keys $sk_{j,1},...,sk_{j,3}$ so that they form e.g. a $2$ out of $3$ secret sharing of $sk$. That is, for all $i\in[3]$, $sk_{j,i}=p_j(i)$, where $p_j$ is a random degree one polynomial whose constant term equals $sk$. Thus, by means of the Lagrange coefficients, any subset of size $2$ of such keys can be used to reconstruct $sk$.
-Then we let as before $PK_{j,1},...,PK_{j,3}$ be the corresponding public keys.
-The verifier in check 1 is changed as follows. The verifier will verify that any subset $S$ of ${1,...,3}$ of cardinality $2$ of such public keys is such that $\prod_{l\in S} PK_{j,l}^{\lambda_{S,l}}=PK$, where the values $\lambda_{S,l},l\in S$ are the Lagrange coefficients for set $S$. Since there are $3$ subsets of ${1,...,3}$ of cardinality $2$, check $1$ requires $3*2=6$ exponentiations in the cyclic group.
-In check $2$ the verifier will do the checks as above except for the following change.
-Before, the check was with respect to a single random bit. Now the check is with respect to a random index $k$ in ${1,...,3}$.
-Now we notice that if the check $1$ passes the party could cheat only if there exists at most one index $k'$ such that the public key  $PK_{j,k'}$ is invertible and the verifier happens to choose $k=k'$ and this occurs with prob. $1/3$.
-So, with still one exponentiation in the target group per iteration we get error $1/3$ and we decreased the communication (the size of the proof).</p>
+For each \(j\in[k] \) we can choose e.g. \(3 \) secret keys \(sk_{j,1},...,sk_{j,3} \) so that they form e.g. a \(2 \) out of \(3 \) secret sharing of \(sk \). That is, for all \(i\in[3] \), \(sk_{j,i}=p_j(i) \), where \(p_j \) is a random degree one polynomial whose constant term equals \(sk \). Thus, by means of the Lagrange coefficients, any subset of size \(2 \) of such keys can be used to reconstruct \(sk \).
+Then we let as before \(PK_{j,1},...,PK_{j,3} \) be the corresponding public keys.
+The verifier in check 1 is changed as follows. The verifier will verify that any subset \(S \) of \({1,...,3} \) of cardinality \(2 \) of such public keys is such that \(\prod_{l\in S} PK_{j,l}^{\lambda_{S,l}}=PK \), where the values \(\lambda_{S,l},l\in S \) are the Lagrange coefficients for set \(S \). Since there are \(3 \) subsets of \( {1,...,3} \) of cardinality \(2 \), check \(1 \) requires \( 3*2=6 \) exponentiations in the cyclic group.
+In check \(2 \) the verifier will do the checks as above except for the following change.
+Before, the check was with respect to a single random bit. Now the check is with respect to a random index \(k \) in \({1,...,3} \).
+Now we notice that if the check \(1 \) passes the party could cheat only if there exists at most one index \(k' \) such that the public key  \(PK_{j,k'} \) is invertible and the verifier happens to choose \(k=k' \) and this occurs with prob. \(1/3 \).
+So, with still one exponentiation in the target group per iteration we get error \(1/3 \) and we decreased the communication (the size of the proof).</p>
 <p>Experiments show that, though the time performance may not be much better, this approach is preferable when attempting to reduce the communication cost. The time verification cost depends on the ratio of efficiency between exponentiations in target group and exponentiations in the cyclic groups.
 If for some cyclic group this ratio were high (that is exponentiations in the target group were much more expensive than exponentiations in the cyclic group), the approach on general secret sharing would also be more efficient in terms of time costs for the verifier. For example, in some applications the period between publication of the tlock public key and revealing of the corresponding secret key could be short; in such case it could make sense to use cyclic groups with short security parameters so that the secret sharing variant could improve more on verification time. In most cases this variant improves slightly on proof size.</p>
 <p>For the concrete case of e.g. a 2 out of 3 SS one can choose the interpolation points so as to make the Lagrange coefficients to be small integers. </p>
 <h4 id="random-check-trick"><a class="header" href="#random-check-trick">Random check trick</a></h4>
-<p>Another trick to make the SS variant more efficient is the following. Let us assume a 2 out of 4 SS as above. The verifier can be modified so as to choose random scalars $r_j,j\in[k]$ and to set for each $l\in [4]$:</p>
-<p>$RPK_{l}=\prod_{j\in[k]}PK_{j,l}^{r_j}$</p>
-<p>Then, the verifier can check for each subset $S$ of $[4]$ of cardinality $2$  that:</p>
-<p>$\prod_{l\in S} RPK_{l}^{\lambda_{S,l}}=PK^{\sum_{j\in[k]} r_j}$ 
-In this way, the verifier would do a number of exponentiations in the cyclic group of the order $4k+13$ rather than $12k$, and this should make the verifier of the 2 out of 4 SS variant more efficient.</p>
+<p>Another trick to make the SS variant more efficient is the following. Let us assume a 2 out of 4 SS as above. The verifier can be modified so as to choose random scalars \(r_j,j\in[k] \) and to set for each \(l\in [4] \):</p>
+<p>$$RPK_{l}=\prod_{j\in[k]}PK_{j,l}^{r_j} $$</p>
+<p>Then, the verifier can check for each subset \(S \) of \([4] \) of cardinality \(2 \)  that:</p>
+<p>\( \prod_{l\in S} RPK_{l}^{\lambda_{S,l}}=PK^{\sum_{j\in[k]} r_j} \) 
+In this way, the verifier would do a number of exponentiations in the cyclic group of the order \(4k+13 \) rather than \(12k \), and this should make the verifier of the 2 out of 4 SS variant more efficient.</p>
 <ul>
 <li>TODO: check the soundness of the approach and implement it.</li>
 </ul>
 <h3 id="generalization-to-any-homomorphic-owf-and-thus-to-rsa"><a class="header" href="#generalization-to-any-homomorphic-owf-and-thus-to-rsa">Generalization to any homomorphic OWF and thus to RSA</a></h3>
 <p>The previous protocol only uses the following facts:
 - The exponentiation in a cyclic group is difficult to invert (for security).
-- The exponentiation in a cyclic group is easy to check, that is given $sk$ and $PK$ it is easy to check if $PK=g^{sk}$.
-- The exponentiation in a cyclic group is homomorphic, that is the product of two public keys $PK_1,PK_2$ whose secret keys are resp. $sk_1,sk_2$ is a public key $PK$ such that the corresponding secret key $sk$ equals $sk_1+sk_2$ modulo the order of the group. </p>
+- The exponentiation in a cyclic group is easy to check, that is given \(sk \) and \(PK \) it is easy to check if \(PK=g^{sk} \).
+- The exponentiation in a cyclic group is homomorphic, that is the product of two public keys \(PK_1,PK_2 \) whose secret keys are resp. \(sk_1,sk_2 \) is a public key \(PK \) such that the corresponding secret key \(sk \) equals \(sk_1+sk_2 \) modulo the order of the group. </p>
 <p>This can be generalized to any homomorphic one-way function (OWF). Exponentiation in cyclic groups are examples of homomorphic OWFs but another notable example is RSA.
-Given a modulus $N$ product of two safe primes and an exponent $d\in Z_{\phi(\phi(N))}$, the RSA function $f_{RSA}$ is the function that maps $x$ to $x^d\ mod\ N$. This function can be seen to be also homomorphic.
+Given a modulus \(N \) product of two safe primes and an exponent \(d\in Z_{\phi(\phi(N))} \), the RSA function \(f_{RSA} \) is the function that maps \(x \) to \(x^d\ mod\ N \). This function can be seen to be also homomorphic.
 Note that we do not claim that we can use this directly for OAEP or related RSA-based encryption schemes.</p>
-<p>Additioanlly, we have a trapdoor: if a party has the factorization of the modulus, this party is able to invert the evaluation of the function $PK=f_{RSA}(sk)$ before the prescribed time to get the corresponding secret key $sk$. 
+<p>Additioanlly, we have a trapdoor: if a party has the factorization of the modulus, this party is able to invert the evaluation of the function \(PK=f_{RSA}(sk) \) before the prescribed time to get the corresponding secret key \(sk \). 
 Observe that the variant with general secret sharing does not generalize to RSA and all homomorphic OWF. </p>
 <h3 id="how-to-guarantee-that-anyone-can-freely-join-without-spamming-the-blockchain"><a class="header" href="#how-to-guarantee-that-anyone-can-freely-join-without-spamming-the-blockchain">How to guarantee that anyone can freely join without spamming the blockchain?</a></h3>
-<p>Depending on the resources of the nodes it might be possible only to verify proofs and accept the contribution of a small fraction of the total committee members, especially if huge number of parties want to contribute. For concreteness, it might be that the nodes have resources to work only on $N$ committee members.
-In that case, the blockchain can do the following. There is a time $d$ before which parties can submit their contribution. At time $d$ one sees the random beacon published by LOE and this value is used to select (e.g., via a cryptographic hash function) a random subset of committee members of size $N$ among all committee members who took part in the protocol. The unpredictability of the random beacon of LOE makes hard to cheat and allows fair choice of the committee members in the limit of the resources of the nodes.</p>
+<p>Depending on the resources of the nodes it might be possible only to verify proofs and accept the contribution of a small fraction of the total committee members, especially if huge number of parties want to contribute. For concreteness, it might be that the nodes have resources to work only on \(N \) committee members.
+In that case, the blockchain can do the following. There is a time \(d \) before which parties can submit their contribution. At time \(d \) one sees the random beacon published by LOE and this value is used to select (e.g., via a cryptographic hash function) a random subset of committee members of size \(N \) among all committee members who took part in the protocol. The unpredictability of the random beacon of LOE makes hard to cheat and allows fair choice of the committee members in the limit of the resources of the nodes.</p>
 <h3 id="from-tlcs-to-timed-signatures-and-timed-proofs"><a class="header" href="#from-tlcs-to-timed-signatures-and-timed-proofs">From TLCS to timed signatures and timed proofs</a></h3>
-<p>Borrowing ideas from the celebrated Feige-Lapidot-Shamir technique, the Schnorr signature scheme can be modified so that the underlying sigma protocol on which it is based proves knowledge of a witness to the following $NP$ statement: &quot;I know a secret key corresponding to $PK_{A}$ OR I know a secret key corresponding to $PK$&quot;, where $PK_A$ is a known public key of a user Alice and $PK$ is a TLCS public key $PK$ for some time $C$.</p>
-<p>In this way a resulting signature is such that: a valid signature by Alice looks convincing to Bob before time $C$ but if Bob transfers this signature to Peggy after time $C$, such signature will not look convincing to Peggy since it might have been generated by anyone using the simulator algorithm of the sigma protocol using the secret key corresponding to $PK$ (that may be assumed to be known by anyone after time $C$).</p>
-<p>The same concept can be extended to general-purpose NIZK proofs that can be made to guarantee the following property: they are publicly verifiable until a given time $C$ but after $C$ they will be no longer transferable (that is, they will no longer look convincing to any receiver).</p>
+<p>Borrowing ideas from the celebrated Feige-Lapidot-Shamir technique, the Schnorr signature scheme can be modified so that the underlying sigma protocol on which it is based proves knowledge of a witness to the following \(NP \) statement: &quot;I know a secret key corresponding to \(PK_{A} \) OR I know a secret key corresponding to \(PK \)&quot;, where \(PK_A \) is a known public key of a user Alice and \(PK \) is a TLCS public key \(PK \) for some time \(C \).</p>
+<p>In this way a resulting signature is such that: a valid signature by Alice looks convincing to Bob before time \(C \) but if Bob transfers this signature to Peggy after time \(C \), such signature will not look convincing to Peggy since it might have been generated by anyone using the simulator algorithm of the sigma protocol using the secret key corresponding to \(PK \) (that may be assumed to be known by anyone after time \(C \)).</p>
+<p>The same concept can be extended to general-purpose NIZK proofs that can be made to guarantee the following property: they are publicly verifiable until a given time \(C \) but after \(C \) they will be no longer transferable (that is, they will no longer look convincing to any receiver).</p>
 
                     </main>
 
@@ -230,7 +260,7 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ch02-04.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch02-04.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -244,7 +274,7 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ch02-04.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch02-04.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -270,5 +300,6 @@ In that case, the blockchain can do the following. There is a time $d$ before wh
         <!-- Custom JS scripts -->
 
 
+    </div>
     </body>
 </html>
